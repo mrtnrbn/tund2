@@ -19,10 +19,10 @@
 		if (empty ($_POST["signupEmail"])) {
 			
 			// on tühi
-			$signupEmailError = "* V2li on kohustuslik!";
+			$signupEmailError = "* Väli on kohustuslik!";
 			
 		} else {
-			// email on olemas ja 6ige
+			// email on olemas ja õige
 			$signupEmail = $_POST["signupEmail"];
 			
 		}
@@ -50,15 +50,15 @@
 		}
 		
 	}
-	//vaikimisi v22rtus
-	$gender="";
 	
+	//vaikimisi väärtus
+	$gender = "";
 	
-	if (isset ($_POST["signupEmail"])) {
-		if (empty ($_POST["signupEmail"])) {
-			$signupEmailError = "* Väli on kohustuslik!";
+	if (isset ($_POST["gender"])) {
+		if (empty ($_POST["gender"])) {
+			$genderError = "* Väli on kohustuslik!";
 		} else {
-			$signupEmail = $_POST["signupEmail"];
+			$gender = $_POST["gender"];
 		}
 		
 	} 
@@ -69,32 +69,32 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>sisselogimise leht</title>
+		<title>Sisselogimise leht</title>
 	</head>
 	<body>
 
-		<h1>logi sisse</h1>
+		<h1>Logi sisse</h1>
 		
 		<form method="POST" >
 			
-			<label>e-post</label><br>
+			<label>E-post</label><br>
 			<input name="loginEmail" type="email">
 			
 			<br><br>
 
-			<input name="loginPassword" placeholder="parool" type="password">
+			<input name="loginPassword" placeholder="Parool" type="password">
 			
 			<br><br>
 			
-			<input type="submit" value="logi sisse">
+			<input type="submit" value="Logi sisse">
 		
 		</form>
 		
-		<h1>loo kasutaja</h1>
+		<h1>Loo kasutaja</h1>
 		
 		<form method="POST" >
 			
-			<label>e-post</label><br>
+			<label>E-post</label><br>
 			<input name="signupEmail" type="email" value="<?=$signupEmail;?>"> <?php echo $signupEmailError; ?>
 			
 			<br><br>
@@ -102,20 +102,21 @@
 			<input name="signupPassword" placeholder="Parool" type="password"> <?php echo $signupPasswordError; ?>
 			
 			<br><br>
-			
-			<?php if ($_POST["gender"] == "male") { ?>
-				<input type="radio" name="gender" value="male" checked> male<br>
-			<?php } else { ?>
-				<input type="radio" name="gender" value="male" > male<br>
-			<?php } ?>
-			
-			<?php if ($_POST["gender"] == "female") { ?>
+					
+			<?php if ($gender == "female") { ?>
 				<input type="radio" name="gender" value="female" checked> female<br>
 			<?php } else { ?>
 				<input type="radio" name="gender" value="female" > female<br>
 			<?php } ?>
 			
-			<?php if ($_POST["gender"] == "other") { ?>
+			<?php if ($gender == "male") { ?>
+				<input type="radio" name="gender" value="male" checked> male<br>
+			<?php } else { ?>
+				<input type="radio" name="gender" value="male" > male<br>
+			<?php } ?>
+			
+			
+			<?php if ($gender == "other") { ?>
 				<input type="radio" name="gender" value="other" checked> other<br>
 			<?php } else { ?>
 				<input type="radio" name="gender" value="other" > other<br>
@@ -124,31 +125,6 @@
 			<input type="submit" value="Loo kasutaja">
 		
 		</form>
-
-	</body>
-</html>
-	<head>
-		<title>Sisselogimise leht</title>
-	</head>
-	<body>
-
-		<h1>Logi sisse</h1>
-		<form method="POST">
-			<input name="loginEmail" placeholder="email" type="email">
-			<br><br>
-			<input name="loginPassword" placeholder="parool" type="password">
-			<br><br>
-			<input type="submit" value="logi sisse">
-		</form>
-		<h1>Registeeri</h1>
-		<form method="POST">
-			<input name="signupEmail" placeholder="email" type="email" value="<?=$signupEmail;?>"> <?php echo $signupEmailerror?>
-			<br><br>
-			<input name="signupPassword" placeholder="parool" type="password">
-			<br><br>
-			<input type="submit" value="registeeri">
-		</form>
-			
 
 	</body>
 </html>
