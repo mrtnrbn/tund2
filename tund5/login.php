@@ -1,5 +1,9 @@
+
+
 <?php 
-	
+	// login j2tab eposti meelde, v2ljad kohustuslikud
+	//signup 4 v2lja(oma idee)-esimene kodutoo lisa 2 v2lja(nt kaal ja pikkus)
+	//andmete salvestamine ja n2itamine oma idee j2rgi
 	require("/home/martreba/config.php");
 	require("functions.php");
 	
@@ -94,8 +98,9 @@
 		 isset($_POST["loginPassword"])&&
 		 !empty($_POST["loginEmail"])&&
 		 !empty($_POST["loginPassword"])
-		)
-	
+		)	{
+		$notice=login($_POST["loginEmail"], $_POST["loginPassword"]);
+		}
 
 ?>
 <!DOCTYPE html>
